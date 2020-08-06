@@ -50,3 +50,6 @@ valine:
   avatar: 'mp'
   pageSize: '10'
   placeholder: '请输入...' 
+
+# 点击特效
+lovejs: true
