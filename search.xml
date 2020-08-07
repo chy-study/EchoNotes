@@ -94,7 +94,9 @@
   <entry>
     <title>Markdown 笔记</title>
     <url>/EchoNotes/2020/08/07/MarkdownNotes/</url>
-    <content><![CDATA[<h4 id="Markdown是一种纯文本格式的标记语言"><a href="#Markdown是一种纯文本格式的标记语言" class="headerlink" title="Markdown是一种纯文本格式的标记语言"></a>Markdown是一种纯文本格式的标记语言</h4><ul>
+    <content><![CDATA[<p>摘要…</p>
+<a id="more"></a>
+<h4 id="Markdown是一种纯文本格式的标记语言"><a href="#Markdown是一种纯文本格式的标记语言" class="headerlink" title="Markdown是一种纯文本格式的标记语言"></a>Markdown是一种纯文本格式的标记语言</h4><ul>
 <li><p>标题：在文字前加 # 和一个空格来表示，一个 # 是一级标题，两个 # 是两级标题，以此类推，最高可支持六级标题</p>
   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">...</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure></li>
 <li><p>字体</p>
