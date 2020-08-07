@@ -16,6 +16,15 @@
 ]]></content>
   </entry>
   <entry>
+    <title>HexoNotes</title>
+    <url>/EchoNotes/2020/08/07/HexoNotes/</url>
+    <content><![CDATA[<p>Hexo：一个快速、简洁且高效的博客框架，Hexo 使用 Markdown（或其他渲染引擎）解析文章，生成静态网页。</p>
+<a id="more"></a>]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vue 笔记</title>
     <url>/EchoNotes/2020/08/07/VueNotes/</url>
     <content><![CDATA[<p>Vue是近年很流行的前端开发框架…</p>
