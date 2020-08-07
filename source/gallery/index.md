@@ -1,7 +1,7 @@
 ---
 title: Gallery
 albums: [
-        ["img_url","img_caption"],
+        ["https://cn.vuejs.org/images/logo.png","img_caption"],
         ["img_url","img_caption"]
         ]
 ---
