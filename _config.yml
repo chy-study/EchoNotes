@@ -105,7 +105,7 @@ theme: ocean
 deploy:
   type: git
   repo: https://github.com/chy-study/EchoNotes.git
-  branch: master
+  branch: gh-pages
 
 # 本地检索
 search:
