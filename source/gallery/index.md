@@ -4,6 +4,6 @@ type: gallery
 layout: "gallery"
 albums: [
         ["https://cn.vuejs.org/images/logo.png","img_caption"],
-        ["img_url","img_caption"]
+        ["https://cn.vo.png","img_caption"]
         ]
 ---
