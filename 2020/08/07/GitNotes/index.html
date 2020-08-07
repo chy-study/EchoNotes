@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>
-    HexoNotes |
+    Git 笔记 |
     
     EchoNotes</title>
   
@@ -33,7 +33,7 @@
 <body>
 <main class="content">
   <section class="outer">
-  <article id="post-HexoNotes" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  <article id="post-GitNotes" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
     <div class="article-inner">
         
@@ -41,7 +41,7 @@
                 
   
     <h1 class="article-title" itemprop="name">
-      HexoNotes
+      Git 笔记
     </h1>
   
   
@@ -54,8 +54,8 @@
 
                 
                     <div class="article-meta">
-                        <a href="/EchoNotes/2020/08/07/HexoNotes/" class="article-date">
-  <time datetime="2020-08-07T07:30:13.000Z" itemprop="datePublished">2020-08-07</time>
+                        <a href="/EchoNotes/2020/08/07/GitNotes/" class="article-date">
+  <time datetime="2020-08-07T05:18:16.951Z" itemprop="datePublished">2020-08-07</time>
 </a>
                             
   <div class="article-category">
@@ -82,22 +82,13 @@
                                             
 
                                                 
-                                                                    <p>Hexo：一个快速、简洁且高效的博客框架，Hexo 使用 Markdown（或其他渲染引擎）解析文章，生成静态网页。</p>
+                                                                    <p>Git是版本管理工具，功能很强大</p>
 <a id="more"></a>
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
-<li>清除缓存文件 (db.json) 和已生成的静态文件 (public)：<br><code>hexo clean</code></li>
-<li>生成静态文件<br><code>hexo g</code></li>
-<li>本地启动服务<br><code>hexo s</code></li>
-<li>部署代码到远程仓库<br><code>hexo d</code></li>
-</ul>
-<h3 id="写作"><a href="#写作" class="headerlink" title="写作"></a>写作</h3><ul>
-<li>创建新文章或者新的页面<br><code>hexo new [layout] &lt;title&gt;</code><br>Hexo有三种布局：post、page 和 draft</li>
-</ul>
-<h3 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h3><ul>
-<li>文件最上方以 — 分隔的区域，用于指定个别文件的变量</li>
-<li>参数：<ul>
-<li>layout, title, date, updated, comments, tags, categories, permalink</li>
-<li>例如:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line"> - Diary</span><br><span class="line">tags:</span><br><span class="line"> - PS3</span><br><span class="line"> - Games</span><br></pre></td></tr></table></figure></li>
+<h4 id="GitHub-Pages部署Vue静态页面"><a href="#GitHub-Pages部署Vue静态页面" class="headerlink" title="GitHub Pages部署Vue静态页面"></a>GitHub Pages部署Vue静态页面</h4><ul>
+<li>将dist目录下的所有文件夹推送至远程仓库的gh-pages分支<ul>
+<li>强制添加dist文件夹<br><code>git add -f dist</code></li>
+<li>提交到本地暂存区<br><code>git commit -m &#39;注释...&#39;</code></li>
+<li>dist目录下的代码推送到远程仓库<br><code>git subtree push --prefix dist origin gh-pages</code></li>
 </ul>
 </li>
 </ul>
@@ -107,7 +98,7 @@
                                     <footer class="article-footer">
                                         
                                         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/EchoNotes/tags/hexo/" rel="tag">hexo</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/EchoNotes/tags/git/" rel="tag">git</a></li></ul>
 
                                     </footer>
 
@@ -117,10 +108,19 @@
         
   <nav class="article-nav">
     
+      <a href="/EchoNotes/2020/08/07/MarkdownNotes/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            Markdown 笔记
+          
+        </div>
+      </a>
     
-      <a href="/EchoNotes/2020/08/07/VueNotes/" class="article-nav-link">
+    
+      <a href="/EchoNotes/2020/08/07/DelphiNotes/" class="article-nav-link">
         <strong class="article-nav-caption">后一篇</strong>
-        <div class="article-nav-title">Vue 笔记</div>
+        <div class="article-nav-title">Delphi 笔记</div>
       </a>
     
   </nav>
