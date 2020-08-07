@@ -3,7 +3,9 @@
   <entry>
     <title>Git 笔记</title>
     <url>/EchoNotes/2019/07/18/GitNotes/</url>
-    <content><![CDATA[<h4 id="GitHub-Pages部署Vue静态页面"><a href="#GitHub-Pages部署Vue静态页面" class="headerlink" title="GitHub Pages部署Vue静态页面"></a>GitHub Pages部署Vue静态页面</h4><ul>
+    <content><![CDATA[<p>Git是版本管理工具，功能很强大</p>
+<a id="more"></a>
+<h4 id="GitHub-Pages部署Vue静态页面"><a href="#GitHub-Pages部署Vue静态页面" class="headerlink" title="GitHub Pages部署Vue静态页面"></a>GitHub Pages部署Vue静态页面</h4><ul>
 <li>将dist目录下的所有文件夹推送至远程仓库的gh-pages分支<ul>
 <li>强制添加dist文件夹<br><code>git add -f dist</code></li>
 <li>提交到本地暂存区<br><code>git commit -m &#39;注释...&#39;</code></li>
@@ -16,7 +18,9 @@
   <entry>
     <title>Vue 笔记</title>
     <url>/EchoNotes/2020/08/07/VueNotes/</url>
-    <content><![CDATA[<h4 id="指令-指令带有前缀v-职责是当表达式的值改变时，将其产生的连带影响，响应式地作用于-DOM"><a href="#指令-指令带有前缀v-职责是当表达式的值改变时，将其产生的连带影响，响应式地作用于-DOM" class="headerlink" title="指令:指令带有前缀v-,职责是当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM"></a>指令:指令带有前缀v-,职责是当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM</h4><ul>
+    <content><![CDATA[<p>Vue是近年很流行的前端开发框架…</p>
+<a id="more"></a>
+<h4 id="指令-指令带有前缀v-职责是当表达式的值改变时，将其产生的连带影响，响应式地作用于-DOM"><a href="#指令-指令带有前缀v-职责是当表达式的值改变时，将其产生的连带影响，响应式地作用于-DOM" class="headerlink" title="指令:指令带有前缀v-,职责是当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM"></a>指令:指令带有前缀v-,职责是当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM</h4><ul>
 <li>v-bind: 绑定数据和元素的属性,例如 <code>v-bind:title=&quot;&quot;</code>, <code>v-bind:class=&quot;&quot;（class和style的绑定）</code>，缩写为 <code>:title=&quot;&quot;</code>, <code>:class=&quot;&quot;</code></li>
 <li>条件与循环： v-if 和 v-for</li>
 <li>事件监听： v-on，例如 v-on:click=””，缩写为 @click=””</li>
@@ -144,7 +148,9 @@
   <entry>
     <title>Delphi 笔记</title>
     <url>/EchoNotes/2020/08/07/DelphiNotes/</url>
-    <content><![CDATA[<ul>
+    <content><![CDATA[<p>Delphi是一门编程语言…</p>
+<a id="more"></a>
+<ul>
 <li><p>AssignFile(F, ‘C:\MyFile.txt’)</p>
 <ul>
 <li>将C:\MyFile.txt文件与F变量建立连接，后面可以使用答F变量对文件进行操作。</li>
