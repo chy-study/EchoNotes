@@ -1,6 +1,12 @@
 ---
 title: Markdown 笔记
+categories:
+- 笔记
+tags:
+- markdown
 ---
+摘要...
+<!--more-->
 
 #### Markdown是一种纯文本格式的标记语言
 - 标题：在文字前加 \# 和一个空格来表示，一个 \# 是一级标题，两个 \# 是两级标题，以此类推，最高可支持六级标题
@@ -24,7 +30,7 @@ title: Markdown 笔记
 ***
 - 图片：
 
-	![Vue Logo](http://localhost:8080/img/logo.82b9c7a5.png "Vue是近年来很受欢迎的前端开发框架")
+	![Vue Logo](https://cn.vuejs.org/images/logo.png "Vue是近年来很受欢迎的前端开发框架")
 
 ```
 	语法： ![图片名](图片地址 "图片title")
@@ -74,6 +80,3 @@ title: Markdown 笔记
 		  代码...
 ```
 - 流程图
-
-
->123

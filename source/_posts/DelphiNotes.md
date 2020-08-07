@@ -1,6 +1,13 @@
 ---
 title: Delphi 笔记
+categories:
+- 笔记
+tags:
+- delphi
 ---
+
+Delphi是一门编程语言...
+<!--more-->
 
 - AssignFile(F, 'C:\MyFile.txt')
    - 将C:\MyFile.txt文件与F变量建立连接，后面可以使用答F变量对文件进行操作。

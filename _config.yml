@@ -4,17 +4,17 @@
 
 # Site
 title: EchoNotes
-subtitle: ''
-description: '回声笔记'
-keywords:
+subtitle: '回声笔记'
+description: '个人记录生活与学习的地方'
+keywords: '生活''学习'
 author: CHY
 language: zh-CN
-timezone: ''
+timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://chy-study.github.io
-root: /EchoNotes
+url: https://chy-study.github.io/EchoNotes
+root: /EchoNotes/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:

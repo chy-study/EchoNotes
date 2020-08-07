@@ -1,7 +1,14 @@
 ---
 title: Git 笔记
+top: ture
+categories:
+- 笔记
+tags:
+- git
 ---
 
+Git是版本管理工具，功能很强大
+<!--more-->
 #### GitHub Pages部署Vue静态页面
 - 将dist目录下的所有文件夹推送至远程仓库的gh-pages分支
    - 强制添加dist文件夹
