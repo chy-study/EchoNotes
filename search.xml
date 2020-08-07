@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Git 笔记</title>
+    <url>/EchoNotes/2019/07/18/GitNotes/</url>
+    <content><![CDATA[<h4 id="GitHub-Pages部署Vue静态页面"><a href="#GitHub-Pages部署Vue静态页面" class="headerlink" title="GitHub Pages部署Vue静态页面"></a>GitHub Pages部署Vue静态页面</h4><ul>
+<li>将dist目录下的所有文件夹推送至远程仓库的gh-pages分支<ul>
+<li>强制添加dist文件夹<br><code>git add -f dist</code></li>
+<li>提交到本地暂存区<br><code>git commit -m &#39;注释...&#39;</code></li>
+<li>dist目录下的代码推送到远程仓库<br><code>git subtree push --prefix dist origin gh-pages</code></li>
+</ul>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>Vue 笔记</title>
     <url>/EchoNotes/2020/08/07/VueNotes/</url>
     <content><![CDATA[<h4 id="指令-指令带有前缀v-职责是当表达式的值改变时，将其产生的连带影响，响应式地作用于-DOM"><a href="#指令-指令带有前缀v-职责是当表达式的值改变时，将其产生的连带影响，响应式地作用于-DOM" class="headerlink" title="指令:指令带有前缀v-,职责是当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM"></a>指令:指令带有前缀v-,职责是当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM</h4><ul>
@@ -127,19 +140,6 @@
 <blockquote>
 <p>123</p>
 </blockquote>
-]]></content>
-  </entry>
-  <entry>
-    <title>Git 笔记</title>
-    <url>/EchoNotes/2020/08/07/GitNotes/</url>
-    <content><![CDATA[<h4 id="GitHub-Pages部署Vue静态页面"><a href="#GitHub-Pages部署Vue静态页面" class="headerlink" title="GitHub Pages部署Vue静态页面"></a>GitHub Pages部署Vue静态页面</h4><ul>
-<li>将dist目录下的所有文件夹推送至远程仓库的gh-pages分支<ul>
-<li>强制添加dist文件夹<br><code>git add -f dist</code></li>
-<li>提交到本地暂存区<br><code>git commit -m &#39;注释...&#39;</code></li>
-<li>dist目录下的代码推送到远程仓库<br><code>git subtree push --prefix dist origin gh-pages</code></li>
-</ul>
-</li>
-</ul>
 ]]></content>
   </entry>
   <entry>
