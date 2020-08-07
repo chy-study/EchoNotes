@@ -1,2 +1,3 @@
-# EchoNotesSource
-回声笔记的代码和资料
+# EchoNotes
+
+[回声笔记](https://chy-study.github.io/EchoNotes/ "EchoNotes")
