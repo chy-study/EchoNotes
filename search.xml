@@ -1,14 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/EchoNotes/2020/08/07/test/</url>
-    <content><![CDATA[<h2 id="ceshi"><a href="#ceshi" class="headerlink" title="ceshi"></a>ceshi</h2><ul>
-<li>adadad</li>
-<li>dadwdsd</li>
+    <title>Vue 笔记</title>
+    <url>/EchoNotes/2020/08/07/VueNotes/</url>
+    <content><![CDATA[<h4 id="指令-指令带有前缀v-职责是当表达式的值改变时，将其产生的连带影响，响应式地作用于-DOM"><a href="#指令-指令带有前缀v-职责是当表达式的值改变时，将其产生的连带影响，响应式地作用于-DOM" class="headerlink" title="指令:指令带有前缀v-,职责是当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM"></a>指令:指令带有前缀v-,职责是当表达式的值改变时，将其产生的连带影响，响应式地作用于 DOM</h4><ul>
+<li>v-bind: 绑定数据和元素的属性,例如 <code>v-bind:title=&quot;&quot;</code>, <code>v-bind:class=&quot;&quot;（class和style的绑定）</code>，缩写为 <code>:title=&quot;&quot;</code>, <code>:class=&quot;&quot;</code></li>
+<li>条件与循环： v-if 和 v-for</li>
+<li>事件监听： v-on，例如 v-on:click=””，缩写为 @click=””</li>
+<li>双向绑定： v-model，例如 v-model=””</li>
+<li>条件渲染： v-if, v-else-if, v-else, v-show</li>
+<li>v-else-if 和 v-else 必须紧跟在 v-if 或者 v-else-if 后面。否则它将不会被识别</li>
+<li>不推荐同时使用 v-if 和 v-for,当 v-if 与 v-for 一起使用时，v-for 具有比 v-if 更高的优先级.</li>
+<li>v-if 和 v-show 的比较：<ul>
+<li>v-show 不支持 &lt;template&gt; 元素，也不支持 v-else。<ul>
+<li>v-if 是“真正”的条件渲染，它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建。如果在初始渲染时条件为假，则什么也不做,——直到条件第一次变为真时，才会开始渲染条件块</li>
+<li>v-show不管初始条件是什么，元素总是会被渲染，并且只是基于 CSS 进行切换,切换元素的 CSS property display，元素始终会被渲染并保留在 DOM 中</li>
+<li>一般来说，v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好.</li>
 </ul>
-<h2 id="eqweqe"><a href="#eqweqe" class="headerlink" title="eqweqe"></a>eqweqe</h2><ul>
-<li>sdadw</li>
+</li>
+</ul>
+</li>
+<li>用key管理可复用的元素： Vue 会尽可能高效地渲染元素，通常会复用已有元素而不是从头开始渲染。如果不需要复用，只需要在元素上添加一个具有唯一值的 key attribute 即可。请用字符串或数值类型的值作为key</li>
+<li>列表渲染： v-for，语法格式 item in items，也可以用 of 代替 in 作为分隔符，items是源数据，item是被迭代的元素的别名。建议尽可能在使用 v-for 时提供 key attribute<ul>
+<li>遍历数组: v-for=”(item, index) in items”， item: property， index: 当前项的索引</li>
+<li>遍历对象: v-for=”(value,name,index) in object”, value: property, name: property名称(键名), index: 索引</li>
+</ul>
+</li>
+<li>事件修饰符： Vue.js 为 v-on 提供了事件修饰符，修饰符是由点开头的指令后缀来表示的。修饰符可以串联，使用时顺序很重要<ul>
+<li>.stop</li>
+<li>.prevent</li>
+<li>.capture</li>
+<li>.self</li>
+<li>.once</li>
+<li>.passive</li>
+</ul>
+</li>
+<li>按键修饰符： 监听键盘事件，v-on:keyup.page-down=” “， @keyup.enter=” “ （可能需要加上 .native）</li>
+<li>.exact修饰符： 控制精确的系统修饰符组合触发的事件。</li>
+<li>鼠标按钮修饰符： @click.left=””， @click.right=””， @click.middle=””</li>
+<li>表单输入绑定修饰符：<ul>
+<li>v-model.lazy=””，在默认情况下，v-model在每次input事件触发后将输入框的值与数据进行同步，这时可以添加lazy修饰符，从而转为在change事件之后进行同步</li>
+<li>v-model.number=””，自动将用户的输入值转为数值类型</li>
+<li>v-model.trim=””，自动过滤用户输入的首尾空白字符</li>
+</ul>
+</li>
+<li>Vue暴露出了一些有用的实例property和方法，它们都有前缀$，以便与用户定义的property区分开。 例如： vm.$data, vm.$watch()</li>
+<li>计算属性：computed，计算属性是基于它们的响应式依赖进行缓存的，只在相关响应式依赖发生改变时它们才会重新求值,大多数情况下更合适</li>
+<li>侦听属性：watch，当需要在数据变化时执行异步或开销较大的操作时，这个方式是最有用的</li>
+<li><strong>在 JavaScript中，truthy（真值）指的是在布尔值上下文中，转换后的值为真的值。所有值都是真值，除非它们被定义为 假值（即除 false、0、””、null、undefined 和 NaN 以外皆为真值）。JavaScript 在布尔值上下文中使用强制类型转换（coercion）。</strong></li>
+<li>ref：<ul>
+<li>用来给DOM元素或子组件注册引用信息。引用信息会根据父组件的 $refs 对象进行注册。如果在普通的DOM元素上使用，引用信息就是元素; 如果用在子组件上，引用信息就是组件实例</li>
+<li>只要想要在Vue中直接操作DOM元素，就必须用ref属性进行注册</li>
+<li>例如要在create的时候引用DOM元素，先在DOM中使用ref标签进行注册，然后便可以通过’this.$refs’再跟注册时的名称来引用DOM元素了</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="组件基础：组件是可复用的Vue实例，并且带有一个名字"><a href="#组件基础：组件是可复用的Vue实例，并且带有一个名字" class="headerlink" title="组件基础：组件是可复用的Vue实例，并且带有一个名字"></a>组件基础：组件是可复用的Vue实例，并且带有一个名字</h4><ul>
+<li>组件的data选项必须是一个函数，不能直接提供一个对象</li>
+<li>自定义的组件必须先注册，Vue才能够识别并在模板中使用，组件的注册方式有<strong>全局注册</strong>和<strong>局部注册</strong></li>
+<li>通过prop向子组件传递数据</li>
+<li>监听子组件事件<ul>
+<li>父级组件可以像处理 native DOM 事件一样通过 v-on 监听子组件实例的任意事件</li>
+<li>子组件可以通过调用 $emit 方法并传入事件名称来触发一个事件</li>
+</ul>
+</li>
+<li>子组件使用事件抛出一个值<ul>
+<li>子组件使用 $emit 方法的第二个参数来提供这个值</li>
+<li>在父级组件监听这个事件的时候，可以：<ul>
+<li>通过 $event 直接访问到被抛出的这个值</li>
+<li>或者，如果父级组件对这个事件的处理函数是一个方法，那么这个值将会作为第一个参数传入这个方法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>通过插槽分发内容：&lt;slot&gt;</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Markdown 笔记</title>
+    <url>/EchoNotes/2020/08/07/MarkdownNotes/</url>
+    <content><![CDATA[<h4 id="Markdown是一种纯文本格式的标记语言"><a href="#Markdown是一种纯文本格式的标记语言" class="headerlink" title="Markdown是一种纯文本格式的标记语言"></a>Markdown是一种纯文本格式的标记语言</h4><ul>
+<li><p>标题：在文字前加 # 和一个空格来表示，一个 # 是一级标题，两个 # 是两级标题，以此类推，最高可支持六级标题</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">...</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure></li>
+<li><p>字体</p>
+<ul>
+<li><strong>加粗</strong>：要加粗的文字左右分别用两个*号包起来，<code>**文字**</code></li>
+<li><em>倾斜</em>：要倾斜的文字左右分别用一个*号包起来，<code>*文字*</code></li>
+<li><strong><em>斜体加粗</em></strong>：要倾斜和加粗的文字左右分别用三个*号包起来，<code>***文字***</code></li>
+<li><del>删除线</del>：要加删除线的文字左右分别用两个<del>号包起来，`</del>文字~~`</li>
+<li><u>下划线</u>：下划线可以通过 HTML 的 &lt;u&gt; 标签来实现，<code>&lt;u&gt;文字&lt;/u&gt;</code></li>
+</ul>
+</li>
+<li><p>换行：段落的换行是使用两个以上空格加上回车，或者在段落后面使用一个空行来表示重新开始一个段落。</p>
+</li>
+<li><p>引用：在引用的文字前加 &gt; 即可，引用也可以嵌套，如加两个&gt;&gt;，三个&gt;&gt;&gt;，n个&gt;…</p>
+</li>
+<li><p>分割线：三个或者三个以上的 - 或者 * 都可以，<code>---</code>，<code>***</code></p>
+</li>
+</ul>
+<hr>
+<hr>
+<ul>
+<li><p>图片：</p>
+<p>  <img src="http://localhost:8080/img/logo.82b9c7a5.png" alt="Vue Logo" title="Vue是近年来很受欢迎的前端开发框架"></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法： ![图片名](图片地址 &quot;图片title&quot;)</span><br><span class="line">    图片名就是显示在图片下面的文字</span><br><span class="line">    图片title是图片的标题，当鼠标移到图片上时显示的内容，title可加可不加</span><br></pre></td></tr></table></figure>
+<ul>
+<li>超链接：<a href="https://cn.vuejs.org/v2/guide/" title="Vue官方出版的多国语言教程">Vue官方教程</a><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法：[超链接名](超链接地址 &quot;超链接title&quot;)</span><br><span class="line">      title可加可不加</span><br></pre></td></tr></table></figure></li>
+<li>列表：<ul>
+<li>无序列表：无序列表用 - + * 任何一种加上空格都可以  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   - 列表内容</span><br><span class="line">+ 列表内容</span><br><span class="line">* 列表内容</span><br><span class="line">注意：- + * 与内容之间有一个空格</span><br></pre></td></tr></table></figure></li>
+<li>有序列表：数字加点加空格  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   1. 列表内容</span><br><span class="line">2. 列表内容</span><br><span class="line">3. 列表内容</span><br><span class="line">注意：点跟内容之间有一个空格</span><br></pre></td></tr></table></figure></li>
+<li>列表嵌套：上一级列表和下一级列表之间敲三个空格即可</li>
+</ul>
+</li>
+<li>表格：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">|表头|表头|表头|</span><br><span class="line">|---|:--:|---:|</span><br><span class="line">|内容|内容|内容|</span><br><span class="line">|内容|内容|内容|</span><br><span class="line"></span><br><span class="line">第二行分割表头和内容。</span><br><span class="line">- 有一个就行，为了对齐，多加了几个</span><br><span class="line">文字默认居左</span><br><span class="line">-两边加：表示文字居中</span><br><span class="line">-右边加：表示文字居右</span><br></pre></td></tr></table></figure></li>
+<li>代码<ul>
+<li>单行代码：代码两边分别用一个反引号 ` 包起来，<code>代码内容</code></li>
+<li>代码块：代码两边分别用三个反引号包起来，且两边的反引号单独占一行<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">代码...</span><br><span class="line">代码...</span><br><span class="line">代码...</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>流程图</li>
+</ul>
+<blockquote>
+<p>123</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>Git 笔记</title>
+    <url>/EchoNotes/2020/08/07/GitNotes/</url>
+    <content><![CDATA[<h4 id="GitHub-Pages部署Vue静态页面"><a href="#GitHub-Pages部署Vue静态页面" class="headerlink" title="GitHub Pages部署Vue静态页面"></a>GitHub Pages部署Vue静态页面</h4><ul>
+<li>将dist目录下的所有文件夹推送至远程仓库的gh-pages分支<ul>
+<li>强制添加dist文件夹<br><code>git add -f dist</code></li>
+<li>提交到本地暂存区<br><code>git commit -m &#39;注释...&#39;</code></li>
+<li>dist目录下的代码推送到远程仓库<br><code>git subtree push --prefix dist origin gh-pages</code></li>
+</ul>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Delphi 笔记</title>
+    <url>/EchoNotes/2020/08/07/DelphiNotes/</url>
+    <content><![CDATA[<ul>
+<li><p>AssignFile(F, ‘C:\MyFile.txt’)</p>
+<ul>
+<li>将C:\MyFile.txt文件与F变量建立连接，后面可以使用答F变量对文件进行操作。</li>
+</ul>
+</li>
+<li><p>Rewrite（）</p>
+<ul>
+<li>创建不存在的文件但不包括文件夹</li>
+</ul>
+</li>
+<li><p>ReadSections</p>
+<ul>
+<li>读取ini文件里面[]的值</li>
+</ul>
+</li>
+<li><p>ReadSectionValues</p>
+<ul>
+<li>读取ini文件[]下面的key-value值</li>
+</ul>
+</li>
+<li><p>readstring(“小节名”,”关键字”,缺省值)</p>
+<ul>
+<li>指定读取ini文件[]下面key对应的value值</li>
+</ul>
+</li>
+<li><p>EOF</p>
+<ul>
+<li>是一个计算机术语，为End Of File的缩写，在操作系统中表示资料源无更多的资料可读取</li>
+</ul>
+</li>
+<li><p>ShowWindowAsync</p>
+<ul>
+<li>一种函数，功能是该函数设置由不同线程产生的窗口的显示状态。</li>
+</ul>
+</li>
+<li><p>ComponentCount</p>
+<ul>
+<li>指打开的窗体所拥有的控件个数，包含所有子组件、孙组件(子组件内的子组件)</li>
+</ul>
+</li>
+<li><p>interval</p>
+<ul>
+<li>单位是0.001秒.如果该属性设置为1000,就是每隔一秒执行下OnTimer程序</li>
+</ul>
+</li>
+<li><p>SetWindowLong  是一个WindowsAPI函数。该函数用来改变指定窗口的属性．函数也将指定的一个32位值设置在窗口的额外存储空间的指定偏移位置。</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">函数原型：</span><br><span class="line">LONG SetWindowLong(</span><br><span class="line">    HWND hWnd,               &#x2F;&#x2F; handle to window</span><br><span class="line">    int nlndex,              &#x2F;&#x2F; offset of value to set</span><br><span class="line">    LONG dwNewLong           &#x2F;&#x2F; new value</span><br><span class="line">);</span><br><span class="line">如果函数成功，返回值是指定的32位整数的原来的值。如果函数失败，返回值为0。若想获得更多错误信息，请调用GetLastError函数。</span><br></pre></td></tr></table></figure></li>
+<li><p>患者表：HOKUDAI1.B_PATIENT_INFO</p>
+</li>
+<li><p>Imemode属性：</p>
+<ul>
+<li>imClose 表示输入法处于关闭状态；</li>
+<li>ImOpen 表示输入法处于打开状态；</li>
+<li>ImChinese 表示处于中文输入法状态；</li>
+<li>ImDontCare 表示若输入法处于关闭状态则打开最近一次使用过的输入法；</li>
+<li>ImSAlpha 表示输入处于半角状态；</li>
+<li>ImAlpha 表示输入处于全角状态。</li>
+</ul>
+</li>
+<li><p>OnNeedData:</p>
+<ul>
+<li>这个事件本身是一个循环，循环起点是把MoreData置为真 “MoreData:=True;”<br>紧接着要注意加入判定是否结束语句<br>如：if QRDBText1.Dataset.Eof then MoreData:=False;<br>如果判断语句放在事件最后，将导致QRDBText1.Dataset的最后一条记录不会被打印。<br>该事件非常适合用于在追加数据集时根据数据集的内容设置字体等</li>
+</ul>
+</li>
+<li><p>FindFirst：</p>
+<ul>
+<li>是用来寻找目标目录下的第一个文件，当成功找到文件时,返回0.</li>
+</ul>
+</li>
+<li><p>FindNext：</p>
+<ul>
+<li>则是寻找下一个</li>
+</ul>
+</li>
+<li><p>Rewrite(&lt;文件变量名&gt;)：</p>
+<ul>
+<li>若无该文件，则创建文件。<br>若有该文件，覆盖掉原文件。<br>打开文件后，可以对文件内容进行写操作。</li>
+</ul>
+</li>
+<li><p>Append(&lt;文件变量名&gt;)：</p>
+<ul>
+<li>追加内容到文件中。文件必须要存在。</li>
+</ul>
+</li>
+<li><p>application.ProcessMessages:</p>
+<ul>
+<li>主要作用使程序在循环时能够响应外界事件。一般情况下，程序在循环的时候不响应外界事件。直到循环结束为止才能接受和响应外界事件。application.ProcessMessages可以有效的解决循环循环的独占问题，能够暂时中断应用程序的执行</li>
+</ul>
+</li>
+<li><p>IncludeTrailingPathDelimiter(const S:String):String</p>
+<ul>
+<li>和IncludeTrailingBackslash是同样功能，不过根据delphi的帮助，我们现在应该使用IncludeTrailingPathDelimiter才对，前者只是为了向前兼容才保留的,这个函数是将参数S提供的一个表示路径的末尾加上“/”符（如果是unix系统，则加上“/”）</li>
+</ul>
+</li>
+<li><p>ExcludeTrailingPathDelimiter(const S:String):String</p>
+<ul>
+<li>和ExcludeTrailingBackslash是同样功能，同样我们应该使用ExcludeTrailingPathDelimiter<br>这个函数和IncludeTrailingPathDelimiter正好相反，是用来去掉一个路径末尾的斜杠符的</li>
+</ul>
+</li>
+<li><p>拷贝参考的文件后，需要提交一次原始的代码，注释是copy…</p>
+</li>
+<li><p>打印：</p>
+<ul>
+<li>先安装驱动（LBP3018_R150_V110_W32_ZH_1.exe这个EXE解压后里面有setup），再连接打印机地址 双击连接打印机地址时出来的打印机图标</li>
+<li>打印机地址 192.168.15.125</li>
+<li>user:administrator</li>
+<li>password:newtouch@1234125</li>
+</ul>
+</li>
+<li><p>表：</p>
+<ul>
+<li>I_Results_view 检查结果登录表</li>
+<li>D_RECORD 透析记录表</li>
+<li>B_PATIENT_INFO 患者信息表</li>
+</ul>
+</li>
 </ul>
 ]]></content>
   </entry>

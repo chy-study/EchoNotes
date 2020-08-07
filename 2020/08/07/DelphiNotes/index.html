@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+    <meta name="description" content="回声笔记">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Delphi 笔记 |
+    
+    EchoNotes</title>
+  
+    <link rel="shortcut icon" href="/EchoNotes/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/EchoNotes/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/EchoNotes/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/EchoNotes/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-DelphiNotes" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      Delphi 笔记
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/EchoNotes/2020/08/07/DelphiNotes/" class="article-date">
+  <time datetime="2020-08-07T05:18:16.933Z" itemprop="datePublished">2020-08-07</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+                            
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <ul>
+<li><p>AssignFile(F, ‘C:\MyFile.txt’)</p>
+<ul>
+<li>将C:\MyFile.txt文件与F变量建立连接，后面可以使用答F变量对文件进行操作。</li>
+</ul>
+</li>
+<li><p>Rewrite（）</p>
+<ul>
+<li>创建不存在的文件但不包括文件夹</li>
+</ul>
+</li>
+<li><p>ReadSections</p>
+<ul>
+<li>读取ini文件里面[]的值</li>
+</ul>
+</li>
+<li><p>ReadSectionValues</p>
+<ul>
+<li>读取ini文件[]下面的key-value值</li>
+</ul>
+</li>
+<li><p>readstring(“小节名”,”关键字”,缺省值)</p>
+<ul>
+<li>指定读取ini文件[]下面key对应的value值</li>
+</ul>
+</li>
+<li><p>EOF</p>
+<ul>
+<li>是一个计算机术语，为End Of File的缩写，在操作系统中表示资料源无更多的资料可读取</li>
+</ul>
+</li>
+<li><p>ShowWindowAsync</p>
+<ul>
+<li>一种函数，功能是该函数设置由不同线程产生的窗口的显示状态。</li>
+</ul>
+</li>
+<li><p>ComponentCount</p>
+<ul>
+<li>指打开的窗体所拥有的控件个数，包含所有子组件、孙组件(子组件内的子组件)</li>
+</ul>
+</li>
+<li><p>interval</p>
+<ul>
+<li>单位是0.001秒.如果该属性设置为1000,就是每隔一秒执行下OnTimer程序</li>
+</ul>
+</li>
+<li><p>SetWindowLong  是一个WindowsAPI函数。该函数用来改变指定窗口的属性．函数也将指定的一个32位值设置在窗口的额外存储空间的指定偏移位置。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">函数原型：</span><br><span class="line">LONG SetWindowLong(</span><br><span class="line">    HWND hWnd,               &#x2F;&#x2F; handle to window</span><br><span class="line">    int nlndex,              &#x2F;&#x2F; offset of value to set</span><br><span class="line">    LONG dwNewLong           &#x2F;&#x2F; new value</span><br><span class="line">);</span><br><span class="line">如果函数成功，返回值是指定的32位整数的原来的值。如果函数失败，返回值为0。若想获得更多错误信息，请调用GetLastError函数。</span><br></pre></td></tr></table></figure></li>
+<li><p>患者表：HOKUDAI1.B_PATIENT_INFO</p>
+</li>
+<li><p>Imemode属性：</p>
+<ul>
+<li>imClose 表示输入法处于关闭状态；</li>
+<li>ImOpen 表示输入法处于打开状态；</li>
+<li>ImChinese 表示处于中文输入法状态；</li>
+<li>ImDontCare 表示若输入法处于关闭状态则打开最近一次使用过的输入法；</li>
+<li>ImSAlpha 表示输入处于半角状态；</li>
+<li>ImAlpha 表示输入处于全角状态。</li>
+</ul>
+</li>
+<li><p>OnNeedData:</p>
+<ul>
+<li>这个事件本身是一个循环，循环起点是把MoreData置为真 “MoreData:=True;”<br>紧接着要注意加入判定是否结束语句<br>如：if QRDBText1.Dataset.Eof then MoreData:=False;<br>如果判断语句放在事件最后，将导致QRDBText1.Dataset的最后一条记录不会被打印。<br>该事件非常适合用于在追加数据集时根据数据集的内容设置字体等</li>
+</ul>
+</li>
+<li><p>FindFirst：</p>
+<ul>
+<li>是用来寻找目标目录下的第一个文件，当成功找到文件时,返回0.</li>
+</ul>
+</li>
+<li><p>FindNext：</p>
+<ul>
+<li>则是寻找下一个</li>
+</ul>
+</li>
+<li><p>Rewrite(&lt;文件变量名&gt;)：</p>
+<ul>
+<li>若无该文件，则创建文件。<br>若有该文件，覆盖掉原文件。<br>打开文件后，可以对文件内容进行写操作。</li>
+</ul>
+</li>
+<li><p>Append(&lt;文件变量名&gt;)：</p>
+<ul>
+<li>追加内容到文件中。文件必须要存在。</li>
+</ul>
+</li>
+<li><p>application.ProcessMessages:</p>
+<ul>
+<li>主要作用使程序在循环时能够响应外界事件。一般情况下，程序在循环的时候不响应外界事件。直到循环结束为止才能接受和响应外界事件。application.ProcessMessages可以有效的解决循环循环的独占问题，能够暂时中断应用程序的执行</li>
+</ul>
+</li>
+<li><p>IncludeTrailingPathDelimiter(const S:String):String</p>
+<ul>
+<li>和IncludeTrailingBackslash是同样功能，不过根据delphi的帮助，我们现在应该使用IncludeTrailingPathDelimiter才对，前者只是为了向前兼容才保留的,这个函数是将参数S提供的一个表示路径的末尾加上“/”符（如果是unix系统，则加上“/”）</li>
+</ul>
+</li>
+<li><p>ExcludeTrailingPathDelimiter(const S:String):String</p>
+<ul>
+<li>和ExcludeTrailingBackslash是同样功能，同样我们应该使用ExcludeTrailingPathDelimiter<br>这个函数和IncludeTrailingPathDelimiter正好相反，是用来去掉一个路径末尾的斜杠符的</li>
+</ul>
+</li>
+<li><p>拷贝参考的文件后，需要提交一次原始的代码，注释是copy…</p>
+</li>
+<li><p>打印：</p>
+<ul>
+<li>先安装驱动（LBP3018_R150_V110_W32_ZH_1.exe这个EXE解压后里面有setup），再连接打印机地址 双击连接打印机地址时出来的打印机图标</li>
+<li>打印机地址 192.168.15.125</li>
+<li>user:administrator</li>
+<li>password:newtouch@1234125</li>
+</ul>
+</li>
+<li><p>表：</p>
+<ul>
+<li>I_Results_view 检查结果登录表</li>
+<li>D_RECORD 透析记录表</li>
+<li>B_PATIENT_INFO 患者信息表</li>
+</ul>
+</li>
+</ul>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        
+                                        
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+      <a href="/EchoNotes/2020/08/07/GitNotes/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            Git 笔记
+          
+        </div>
+      </a>
+    
+    
+      <a href="/EchoNotes/2020/08/07/hello-world/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">Hello World</div>
+      </a>
+    
+  </nav>
+
+
+            
+
+                
+                    
+                        
+                            
+
+</article>
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <div class="powered-by">
+  
+	&emsp;<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">访客数:<span id="busuanzi_value_site_uv"></span></span>&emsp;
+  
+    <i class="fe fe-bookmark"></i>文章访问量:<span id="busuanzi_value_page_pv"></span>
+  
+</div>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 EchoNotes</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/EchoNotes/"><img src="/EchoNotes/images/hexo.svg" alt="EchoNotes"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/EchoNotes/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/EchoNotes/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/EchoNotes/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/EchoNotes/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+
+<script src="/EchoNotes/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/EchoNotes/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/EchoNotes/js/lazyload.min.js"></script>
+
+
+<script src="/EchoNotes/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/EchoNotes/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/EchoNotes/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+
+<script src="/EchoNotes/js/ocean.js"></script>
+
+
+  
+<script src="/EchoNotes/js/love.js"></script>
+
+
+
+</body>
+</html>
