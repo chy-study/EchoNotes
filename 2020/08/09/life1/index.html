@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  
+    <meta name="keywords" content="生活&#39;学习">
+  
+  
+    <meta name="description" content="个人记录生活与学习的地方">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    周末培训（一） |
+    
+    EchoNotes</title>
+  
+    <link rel="shortcut icon" href="/EchoNotes/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/EchoNotes/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/EchoNotes/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/EchoNotes/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-life1" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      周末培训（一）
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/EchoNotes/2020/08/09/life1/" class="article-date">
+  <time datetime="2020-08-09T14:03:31.000Z" itemprop="datePublished">2020-08-09</time>
+</a>
+                            
+  <div class="article-category">
+    <a class="article-category-link" href="/EchoNotes/categories/%E7%94%9F%E6%B4%BB/">生活</a>
+  </div>
+
+                    </div>
+                    
+
+                        
+                            
+    <div class="tocbot"></div>
+
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <p>2020年8月9号周日，公司组织第一次培训</p>
+<a id="more"></a>
+
+<h2 id="第一次培训"><a href="#第一次培训" class="headerlink" title="第一次培训"></a>第一次培训</h2><h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">    需要监控的可能会抛出异常的代码块</span><br><span class="line">&#125;</span><br><span class="line">catch(Exception e)&#123;</span><br><span class="line">    出现异常后的处理代码</span><br><span class="line">&#125;</span><br><span class="line">finally&#123;</span><br><span class="line">    回收资源的动作</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>finally{} 里放内存回收相关的代码</p>
+</li>
+<li><p>在子类方法里不该抛出比父类范围更广的异常</p>
+</li>
+<li><p>try{} 里面包含可能抛出异常的代码,尽量减少用try监控的代码块</p>
+</li>
+<li><p>catch(){} 用专业的异常来处理，最后再用Exception异常来兜底</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">    IO代码</span><br><span class="line">    数据库连接代码</span><br><span class="line">&#125;</span><br><span class="line">catch(IOException ioe)&#123;处理IO异常的代码&#125;</span><br><span class="line">catch(SQLException ioe)&#123;处理数据库操作异常的代码&#125;、</span><br><span class="line">catch(Exception ioe)&#123;最后再用Exception这个异常基类&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在catch从句里，别简单地抛出异常了事，应当尽可能地处理异常。</p>
+</li>
+</ol>
+<h3 id="看慢SQL"><a href="#看慢SQL" class="headerlink" title="看慢SQL"></a>看慢SQL</h3><ol>
+<li>Linux命令，MySql命令，看long SQL</li>
+<li>监控CAT，Zabbix</li>
+</ol>
+<h3 id="数据库调优"><a href="#数据库调优" class="headerlink" title="数据库调优"></a>数据库调优</h3><ol>
+<li>索引</li>
+<li>缓存，redis</li>
+<li>MySql集群，主从，读写分离，LVS，负载均衡</li>
+<li>MyCAT分库分表</li>
+</ol>
+<h3 id="JDBC连接数据库"><a href="#JDBC连接数据库" class="headerlink" title="JDBC连接数据库"></a>JDBC连接数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">public class JDBCRead &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            &#x2F;&#x2F; 加载数据库驱动</span><br><span class="line">            Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</span><br><span class="line">        &#125; catch (ClassNotFoundException e) &#123;</span><br><span class="line">            System.out.println(&quot;加载数据库驱动失败&quot;);</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        Connection connection &#x3D; null;</span><br><span class="line">        Statement stmt &#x3D; null;</span><br><span class="line">        try &#123;</span><br><span class="line">            &#x2F;&#x2F; 创建连接</span><br><span class="line">            connection &#x3D; DriverManager.getConnection(&quot;jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;test&quot;,&quot;root&quot;,&quot;123456&quot;);</span><br><span class="line">            if (connection !&#x3D; null) &#123;</span><br><span class="line">                &#x2F;&#x2F; 通过Statement对象执行select语句</span><br><span class="line">                stmt &#x3D; connection.createStatement();</span><br><span class="line">                String query &#x3D; &quot;select id, username, password from t_user&quot;;</span><br><span class="line">                &#x2F;&#x2F; 通过ResultSet对象得到查询的结果</span><br><span class="line">                ResultSet rs &#x3D; stmt.executeQuery(query);</span><br><span class="line">                &#x2F;&#x2F; 通过rs.next()方法遍历查询结果</span><br><span class="line">                while (rs.next()) &#123;</span><br><span class="line">                    System.out.println(&quot;id &#x3D; &quot; + rs.getInt(&quot;id&quot;));</span><br><span class="line">                    System.out.println(&quot;username &#x3D; &quot; + rs.getString(&quot;username&quot;));</span><br><span class="line">                    System.out.println(&quot;password &#x3D; &quot; + rs.getString(&quot;password&quot;));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                System.out.println(&quot;连接数据库失败&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (SQLException e) &#123;</span><br><span class="line">            System.out.println(&quot;数据库连接抛出异常&quot;);</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            System.out.println(&quot;数据库连接关闭&quot;);</span><br><span class="line">            try &#123;</span><br><span class="line">                connection.close();</span><br><span class="line">                stmt.close();</span><br><span class="line">            &#125; catch (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="读取-properties文件"><a href="#读取-properties文件" class="headerlink" title="读取 .properties文件"></a>读取 .properties文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">public class PropertiesRead &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String fileName;</span><br><span class="line">        if (args !&#x3D; null || args.length &#x3D;&#x3D; 1) &#123;</span><br><span class="line">            fileName &#x3D; args[0] + &quot;.properties&quot;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            fileName &#x3D; &quot;sql.properties&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        String driver &#x3D; null;</span><br><span class="line">        String url &#x3D; null;</span><br><span class="line">        String username &#x3D; null;</span><br><span class="line">        String password &#x3D; null;</span><br><span class="line">        Properties prop &#x3D; new Properties();</span><br><span class="line">        InputStream in &#x3D; null;</span><br><span class="line">        try &#123;</span><br><span class="line">            &#x2F;&#x2F; 读取配置文件</span><br><span class="line">            URL url1 &#x3D; PropertiesRead.class.getClassLoader().getResource(fileName);</span><br><span class="line">            String path &#x3D; url1.getFile();</span><br><span class="line">            in &#x3D; new BufferedInputStream(new FileInputStream(path));</span><br><span class="line">            prop.load(in);</span><br><span class="line">            &#x2F;&#x2F; 读JDBC连接参数</span><br><span class="line">            driver &#x3D; prop.getProperty(&quot;mysql.Driver&quot;);</span><br><span class="line">            url &#x3D; prop.getProperty(&quot;mysql.url&quot;);</span><br><span class="line">            username &#x3D; prop.getProperty(&quot;mysql.username&quot;);</span><br><span class="line">            password &#x3D; prop.getProperty(&quot;mysql.pwd&quot;);</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            if (in !&#x3D; null) &#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    in.close();</span><br><span class="line">                &#125; catch (IOException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            prop.clear();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;driver : &quot;+driver);</span><br><span class="line">        System.out.println(&quot;url : &quot;+url);</span><br><span class="line">        System.out.println(&quot;username : &quot;+username);</span><br><span class="line">        System.out.println(&quot;password : &quot;+password);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="虚拟机体系结构和Java跨平台特性"><a href="#虚拟机体系结构和Java跨平台特性" class="headerlink" title="虚拟机体系结构和Java跨平台特性"></a>虚拟机体系结构和Java跨平台特性</h3>
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/EchoNotes/tags/study/" rel="tag">study</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+      <a href="/EchoNotes/2020/08/16/life2/" class="article-nav-link">
+        <strong class="article-nav-caption">前一篇</strong>
+        <div class="article-nav-title">
+          
+            周末培训（二）
+          
+        </div>
+      </a>
+    
+    
+      <a href="/EchoNotes/2020/08/07/HexoNotes/" class="article-nav-link">
+        <strong class="article-nav-caption">后一篇</strong>
+        <div class="article-nav-title">HexoNotes</div>
+      </a>
+    
+  </nav>
+
+
+            
+
+                
+                    
+                        
+                            
+
+</article>
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <div class="powered-by">
+  
+	&emsp;<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">访客数:<span id="busuanzi_value_site_uv"></span></span>&emsp;
+  
+    <i class="fe fe-bookmark"></i>  文章访问量:<span id="busuanzi_value_page_pv"></span>
+  
+</div>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 EchoNotes</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/EchoNotes/"><img src="/EchoNotes/images/hexo.svg
+" alt="EchoNotes"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/EchoNotes/">主页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/EchoNotes/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/EchoNotes/gallery">相册</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/EchoNotes/categories">分类</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/EchoNotes/tags">标签</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/EchoNotes/about">关于</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+
+<script src="/EchoNotes/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/EchoNotes/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/EchoNotes/js/lazyload.min.js"></script>
+
+
+<script src="/EchoNotes/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/EchoNotes/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/EchoNotes/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+
+<script src="/EchoNotes/js/ocean.js"></script>
+
+
+  
+<script src="/EchoNotes/js/love.js"></script>
+
+
+
+</body>
+</html>
