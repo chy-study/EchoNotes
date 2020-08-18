@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>
-    周末培训（二） |
+    Java笔记 |
     
     EchoNotes</title>
   
@@ -33,7 +33,7 @@
 <body>
 <main class="content">
   <section class="outer">
-  <article id="post-life2" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+  <article id="post-JavaNotes" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
     <div class="article-inner">
         
@@ -41,7 +41,7 @@
                 
   
     <h1 class="article-title" itemprop="name">
-      周末培训（二）
+      Java笔记
     </h1>
   
   
@@ -54,12 +54,12 @@
 
                 
                     <div class="article-meta">
-                        <a href="/EchoNotes/2020/08/16/life2/" class="article-date">
-  <time datetime="2020-08-16T14:00:00.000Z" itemprop="datePublished">2020-08-16</time>
+                        <a href="/EchoNotes/2020/08/17/JavaNotes/" class="article-date">
+  <time datetime="2020-08-17T06:00:11.000Z" itemprop="datePublished">2020-08-17</time>
 </a>
                             
   <div class="article-category">
-    <a class="article-category-link" href="/EchoNotes/categories/%E7%94%9F%E6%B4%BB/">生活</a>
+    <a class="article-category-link" href="/EchoNotes/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
   </div>
 
                     </div>
@@ -82,67 +82,25 @@
                                             
 
                                                 
-                                                                    <p>2020年8月16号周日，公司组织第二次培训</p>
-<a id="more"></a>
-
-<h2 id="第二次培训"><a href="#第二次培训" class="headerlink" title="第二次培训"></a>第二次培训</h2><h3 id="考试题"><a href="#考试题" class="headerlink" title="考试题"></a>考试题</h3><ol>
-<li>写出如下代码的结果，同时说明理由。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String a &#x3D; &quot;abc&quot;;</span><br><span class="line">String b &#x3D; &quot;abc&quot;;</span><br><span class="line">System.out.println(a&#x3D;&#x3D;b);</span><br></pre></td></tr></table></figure>
-
-
+                                                                    <h2 id="Java学习笔记"><a href="#Java学习笔记" class="headerlink" title="Java学习笔记"></a>Java学习笔记</h2><a id="more"></a>
+<ul>
+<li><p>栈区存引用和基本类型，不能存对象，而堆区存对象</p>
 </li>
-</ol>
-<ol start="2">
-<li><p>如何定义一个不可变类？</p>
-</li>
-<li><p>StringBuilder 和 StringBuffer 有什么区别？它们各自适用于哪些场合？</p>
-</li>
-<li><p>hashcode方法在哪些场景里需要重写？</p>
-</li>
-<li><p>抽象类和接口有什么区别？它们各自适用于哪些场合？</p>
-</li>
-<li><p>简述 Hash 表为什么能比较高效地定位到元素。</p>
-</li>
-<li><p>Java里的HashMap是怎么处理Hash定位冲突的？</p>
-</li>
-<li><p>根据场景回答问题。<br><strong>第一步</strong>，我们定义一个 Car 类，其中只有一个 int 类型的 id 属性。<br><strong>第二步</strong>，创建一个 Car 类的实例，假设是 C，设置它的 id 是 1。<br><strong>第三步</strong>，我们通过 new 关键字创建两个不同的 ArrayList，分别是 a1 和 a2，并把第二步里创建的c对象分别放入 a1 和 a2。<br><strong>第四步</strong>，我们在 a1 这个 ArrayList 里，拿出 c 对象，并把它的 id 设置成 2，同时不对存放在 a2 里的 c 对象做任何修改。<br>完成上述四步后，a2 里存放的 c 对象的 id 是多少？<br>同时说明理由。</p>
-</li>
-<li><p>说明 Java 虚拟机为什么能实现跨平台。</p>
-</li>
-<li><p>软引用和弱引用有什么差别？写出软引用和弱引用的一个适用场景。</p>
-</li>
-<li><p>finalize 和 final 关键字各有什么作用？</p>
-</li>
-<li><p>写出至少3种优化 Java 内存性能的编码规范。</p>
-</li>
-</ol>
-<hr>
-<h3 id="参考解答"><a href="#参考解答" class="headerlink" title="参考解答"></a>参考解答</h3><ol start="2">
-<li><p>要创建不可变类，要实现下面几个步骤 ： <a target="_blank" rel="noopener" href="https://www.cnblogs.com/acode/articles/7090429.html">链接</a></p>
+<li><p>把线程不安全变成线程安全：可以用Collections里的synchronizedXxx方法</p>
 <ol>
-<li>将类声明为 final，所以它不能被继承</li>
-<li>将所有的成员声明为私有的，这样就不允许直接访问这些成员</li>
-<li>对变量不要提供 setter 方法</li>
-<li>将所有可变的成员声明为 final，这样只能对它们赋值一次</li>
-<li>通过构造器初始化所有成员，进行深拷贝(deep copy)</li>
-<li>在 getter 方法中，不要直接返回对象本身，而是克隆对象，并返回对象的拷贝</li>
+<li>通过synchronizedList方法，我们能把一个List（比如ArrayList或LinkedList）包装成线程安全的，代码如下：<br><code>Collections.synchronizedList(stuList);</code></li>
+<li>通过synchronizedSet方法，能把一个Set对象包装成线程安全的，代码如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   Set set &#x3D; new HashSet();</span><br><span class="line">Collections.synchronizedSet(set);</span><br></pre></td></tr></table></figure></li>
+<li>通过synchronizedMap方法，能把一个Map对象包装成线程安全的，代码如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   HashMap hm &#x3D; new HashMap();</span><br><span class="line">Collections.synchronizedMap(hm);</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
-<li><p>StringBuilder ： 线程不安全<br>StringBuffer ： 线程安全</p>
-</li>
-<li><p>在HashMap的“键”部分存放自定义对象的时候，一定要在这个对象里用自己的equals和hashCode方法来覆盖Object里的同名方法。</p>
-</li>
-<li><p>在Hash表里，存放在其中的数据和它的存储位置是用Hash函数关联的，<br><a target="_blank" rel="noopener" href="https://s1.ax1x.com/2020/08/18/duj6ns.png">Hash表里存储数据的示意图</a><br>这样做的好处非常明显。比如我们要从中找6这个元素，我们可以先通过Hash函数计算6的索引位置，然后直接从1号索引里找到它了。</p>
-</li>
-<li><p>假如经过Hash函数计算后，7和8有相同的Hash值，会遇到“Hash值冲突”这个问题，对此Java的HashMap对象采用的是“链地址法”的解决方案。<br><a target="_blank" rel="noopener" href="https://s1.ax1x.com/2020/08/18/dujsXj.png">Hash表用链地址法解决冲突的示意图</a></p>
-</li>
-</ol>
+</ul>
 
                                                                         
                                     </div>
                                     <footer class="article-footer">
                                         
                                         
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/EchoNotes/tags/study/" rel="tag">study</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/EchoNotes/tags/Java/" rel="tag">Java</a></li></ul>
 
                                     </footer>
 
@@ -152,19 +110,10 @@
         
   <nav class="article-nav">
     
-      <a href="/EchoNotes/2020/08/17/JavaNotes/" class="article-nav-link">
-        <strong class="article-nav-caption">前一篇</strong>
-        <div class="article-nav-title">
-          
-            Java笔记
-          
-        </div>
-      </a>
     
-    
-      <a href="/EchoNotes/2020/08/09/life1/" class="article-nav-link">
+      <a href="/EchoNotes/2020/08/16/life2/" class="article-nav-link">
         <strong class="article-nav-caption">后一篇</strong>
-        <div class="article-nav-title">周末培训（一）</div>
+        <div class="article-nav-title">周末培训（二）</div>
       </a>
     
   </nav>
