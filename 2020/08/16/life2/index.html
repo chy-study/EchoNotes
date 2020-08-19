@@ -131,9 +131,10 @@
 </li>
 <li><p>在HashMap的“键”部分存放自定义对象的时候，一定要在这个对象里用自己的equals和hashCode方法来覆盖Object里的同名方法。</p>
 </li>
-<li><p>在Hash表里，存放在其中的数据和它的存储位置是用Hash函数关联的，<br><a target="_blank" rel="noopener" href="https://s1.ax1x.com/2020/08/18/duj6ns.png">Hash表里存储数据的示意图</a><br>这样做的好处非常明显。比如我们要从中找6这个元素，我们可以先通过Hash函数计算6的索引位置，然后直接从1号索引里找到它了。</p>
+<li><p>在Hash表里，存放在其中的数据和它的存储位置是用Hash函数关联的</p>
+<p><img src="https://s1.ax1x.com/2020/08/18/duj6ns.png" alt="Hash表里存储数据的示意图" title="Hash表里存储数据的示意图"><br>这样做的好处非常明显。比如我们要从中找6这个元素，我们可以先通过Hash函数计算6的索引位置，然后直接从1号索引里找到它了。</p>
 </li>
-<li><p>假如经过Hash函数计算后，7和8有相同的Hash值，会遇到“Hash值冲突”这个问题，对此Java的HashMap对象采用的是“链地址法”的解决方案。<br><a target="_blank" rel="noopener" href="https://s1.ax1x.com/2020/08/18/dujsXj.png">Hash表用链地址法解决冲突的示意图</a></p>
+<li><p>假如经过Hash函数计算后，7和8有相同的Hash值，会遇到“Hash值冲突”这个问题，对此Java的HashMap对象采用的是“链地址法”的解决方案。<br><img src="https://s1.ax1x.com/2020/08/18/dujsXj.png" alt="Hash表用链地址法解决冲突的示意图" title="Hash表用链地址法解决冲突的示意图"></p>
 </li>
 </ol>
 

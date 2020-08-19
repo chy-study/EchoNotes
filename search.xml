@@ -25,17 +25,97 @@
     <title>Java笔记</title>
     <url>/EchoNotes/2020/08/17/JavaNotes/</url>
     <content><![CDATA[<h2 id="Java学习笔记"><a href="#Java学习笔记" class="headerlink" title="Java学习笔记"></a>Java学习笔记</h2><a id="more"></a>
-<ul>
-<li><p>栈区存引用和基本类型，不能存对象，而堆区存对象</p>
-</li>
-<li><p>把线程不安全变成线程安全：可以用Collections里的synchronizedXxx方法</p>
+<h3 id="栈区存引用和基本类型，而堆区存对象"><a href="#栈区存引用和基本类型，而堆区存对象" class="headerlink" title="栈区存引用和基本类型，而堆区存对象"></a>栈区存引用和基本类型，而堆区存对象</h3><h3 id="把线程不安全变成线程安全："><a href="#把线程不安全变成线程安全：" class="headerlink" title="把线程不安全变成线程安全："></a>把线程不安全变成线程安全：</h3><p>可以用Collections里的synchronizedXxx方法</p>
 <ol>
 <li>通过synchronizedList方法，我们能把一个List（比如ArrayList或LinkedList）包装成线程安全的，代码如下：<br><code>Collections.synchronizedList(stuList);</code></li>
-<li>通过synchronizedSet方法，能把一个Set对象包装成线程安全的，代码如下：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   Set set &#x3D; new HashSet();</span><br><span class="line">Collections.synchronizedSet(set);</span><br></pre></td></tr></table></figure></li>
-<li>通过synchronizedMap方法，能把一个Map对象包装成线程安全的，代码如下：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   HashMap hm &#x3D; new HashMap();</span><br><span class="line">Collections.synchronizedMap(hm);</span><br></pre></td></tr></table></figure></li>
+<li>通过synchronizedSet方法，能把一个Set对象包装成线程安全的，代码如下：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Set set &#x3D; new HashSet();</span><br><span class="line">Collections.synchronizedSet(set);</span><br></pre></td></tr></table></figure></li>
+<li>通过synchronizedMap方法，能把一个Map对象包装成线程安全的，代码如下：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HashMap hm &#x3D; new HashMap();</span><br><span class="line">Collections.synchronizedMap(hm);</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
+<h3 id="从线程内存结构中了解并发结果不一致的原因"><a href="#从线程内存结构中了解并发结果不一致的原因" class="headerlink" title="从线程内存结构中了解并发结果不一致的原因"></a>从线程内存结构中了解并发结果不一致的原因</h3><p>  多线程并发操作同一资源时，可能会出现最终结果和预期不同的情况。<br>  如果某个线程要操作data变量，该线程会先把data变量装载到线程内部的内存中做个副本，之后线程就不再和在主内存中的data变量有任何关系，而是会操作副本变量的值，操作完成后，再把这个副本回写到主内存（也就是堆内存）中。</p>
+<p>  <img src="https://s1.ax1x.com/2020/08/19/dlphqS.png" alt="线程操作某变量的示意图" title="线程操作某变量的示意图"></p>
+<p>  但如果我们通过锁（或Condition或Semaphore）来管理data变量，那么可以保证在同一个时间段里只有1个线程能操作该变量，所以也就能避免数据不一致的问题。</p>
+<h3 id="volatile不能解决数据不一致的问题"><a href="#volatile不能解决数据不一致的问题" class="headerlink" title="volatile不能解决数据不一致的问题"></a>volatile不能解决数据不一致的问题</h3><ul>
+<li>如果某个变量之前加了volatile，线程在每次使用该变量时，都会从主内存中读取该变量最新的值，而且，某线程一旦修改了该变量，这个修改会立即回写到主内存里。</li>
+<li>用volatile修饰的变量不能保证数据一致性，换句话说，volatile不能当锁来用，因为它不能保证主内存的变量在同一时间段里只被一个线程操作。</li>
+<li>那么volatile有什么用呢？被volatile修饰的变量每次在使用时，不是从各线程的内部内存中拿，而是从主内存中拿。这样就能避免“创建副本”到“把副本回写到主内存中”等的操作，从而能提升效率。</li>
+<li>但请注意，如果我们在多线程环境下，针对某个变量有读和写的操作，那么别把它修饰成volatile，因为为了解决数据不一致的问题，我们会给该变量加锁，这样该变量在一个时间段里只会有一个线程进行操作，这样就无法发挥出volatile的优势了。</li>
+<li>请记住这个结论，如果某个变量在多线程环境下只有读或者是只有写的操作，建议把它设置成volatile，这样能提升多线程并发时的效率。<br>
+
 </li>
 </ul>
+<h3 id="Java跨平台的特性"><a href="#Java跨平台的特性" class="headerlink" title="Java跨平台的特性"></a>Java跨平台的特性</h3><p><img src="https://s1.ax1x.com/2020/08/19/dlN15F.png" alt="java代码、字节码、虚拟机和操作系统之间的关系" title="java代码、字节码、虚拟机和操作系统之间的关系"><br><br></p>
+<h3 id="虚拟机体系结构"><a href="#虚拟机体系结构" class="headerlink" title="虚拟机体系结构"></a>虚拟机体系结构</h3><p><img src="https://s1.ax1x.com/2020/08/19/dlwjX9.png" alt="虚拟机体系结构" title="虚拟机体系结构"><br><br></p>
+<h3 id="各种类型数据在虚拟机里的存储位置"><a href="#各种类型数据在虚拟机里的存储位置" class="headerlink" title="各种类型数据在虚拟机里的存储位置"></a>各种类型数据在虚拟机里的存储位置</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>示例</th>
+<th>存储位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>静态变量</td>
+<td>static int val = 1;</td>
+<td>方法区</td>
+</tr>
+<tr>
+<td>常量类数据</td>
+<td>String a= “abc”;</td>
+<td>常量池是在方法区中的</td>
+</tr>
+<tr>
+<td>new出来的对象</td>
+<td>String a = new String(“123”);</td>
+<td>new出来的对象放在堆区，而指向这块堆内存的引用a在栈区</td>
+</tr>
+</tbody></table>
+<br>
+
+<h3 id="分代管理与垃圾回收流程"><a href="#分代管理与垃圾回收流程" class="headerlink" title="分代管理与垃圾回收流程"></a>分代管理与垃圾回收流程</h3><p>虚拟机的堆内存可以再划分为“年轻代”、“年老代”和“持久代“三个区域</p>
+<p><img src="https://s1.ax1x.com/2020/08/19/dlyjXD.png" alt="堆内存中分代管理的示意图" title="堆内存中分代管理的示意图"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中，持久代（也叫持久区）中主要存放的是Java类信息或在代码里通过import引入的类信息，这块空间里的内存对象在代码运行时一般会持久地存在（也是被称为持久代的原因），所以我们平时讨论的垃圾回收流程一般不会涉及到这块空间。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在年轻区里，一般会划分为伊甸区和两个Survivor区（本书翻译成缓冲区，或许在其它资料上有其它的译法），而这里我们把Tenured翻译成年老代。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接下来我们来看下垃圾回收的一般流程。</p>
+<ol>
+<li>我们new出来的对象一般是先到伊甸区（Eden）里申请空间，如果伊甸区满了（当前从伊甸区里无法申请到空间），那么会把伊甸区里还存活的对象复制到其中的一个Survivor区里。这里其实已经有个隐含的回收流程，当我们把伊甸区存活的对象复制到Survivor区时，已经把其中无用的对象回收了。</li>
+<li>接下来当伊甸区和其中的一个Survivor区都满了时，那么会把伊甸区和其中一个Survivor里的存活对象再复制到另外个Survivor区里，这里同样隐含着一次回收流程。</li>
+<li>如果年轻代的空间都满了（即无法从伊甸区和两个Survivor区里申请到对象），那么虚拟机会把年轻代里还存活的对象复制到年老代里。</li>
+<li>当年老代再满时（不会再复制到持久代了），会启动Full GC，对年轻代，年老代和持久代进行全面地回收了，这个就需要耗费较长的时间了。</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在上述的回收流程中，其实包含着两类回收机制。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一类是轻量级回收（Minor GC）。在年轻代里的回收流程都是属于这种，比如我们new出来的一个对象在Eden区申请空间失败，就会触发这类GC。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二类是刚才已经提到的重量级的Full GC流程，如下的四种情况会触发这种GC。</p>
+<ol>
+<li>年老代（Tenured）被写满。</li>
+<li>持久代被写满。</li>
+<li>程序员显式地调用了System.gc()方法。</li>
+<li>我们可以通过java命令分配堆空间的运行策略，比如可以设置年轻代和年老代的比例，如果虚拟机监控到上次GC后，这种运行策略发生变化，也会触发Full GC。</li>
+</ol>
+<p>这里讲一个可能会导致误解的知识点，程序员还是可以通过System.gc()来建议虚拟机启动垃圾回收，但调用这个方法后，虚拟机一般并不会直接启动，而是会过会找个合适的时间点。这和我们之间给出的“程序员无法通过代码回收内存”说辞并不矛盾。</p>
+<h3 id="判断对象可回收的依据"><a href="#判断对象可回收的依据" class="headerlink" title="判断对象可回收的依据"></a>判断对象可回收的依据</h3><ul>
+<li>Java虚拟机如何判断一个对象可以被回收？标准非常简单，当某个对象上<u><strong>没有强引用</strong></u>时，该对象就可以被回收。</li>
+<li>不过，在绝大多数的场景里，当某对象上的最后一个强引用被撤去后，该对象不会被立即回收，而是会在下次启动垃圾回收机制时被回收。</li>
+<li>在JDK的早期版本里，是用“引用计数法”来判断对象上是否有强引用。在后继的JDK版本里，引入了<u><strong>“根搜索算法”(Tracing Collector)</strong></u>。</li>
+</ul>
+<h3 id="深入了解finalize方法"><a href="#深入了解finalize方法" class="headerlink" title="深入了解finalize方法"></a>深入了解finalize方法</h3><p>finalize()是Object类里的protected类型的方法，子类（所有类都是Object的子类）可以通过覆盖这个方法来实现回收前的资源清理工作。和这个方法相关的流程如下所述。</p>
+<ol>
+<li>Java虚拟机一旦通过刚才提到的“根搜索算法”判断出某对象处于可回收状态时，会判断该对象是否重写了Object类的finalize方法，如果没，则直接回收。</li>
+<li>如重写过finalize方法，而且未执行过该方法，则把该对象其放入F-Queue队列，另个线程会定时遍历F-Queue队列，并执行该队列中各对象的finalize方法。</li>
+<li>finalize方法执行完毕后，GC会再次判断该对象是否可被回收，如果可以，则进行回收，如果此时该对象上有强引用，则该对象“复活”，即处于“不可回收状态”。</li>
+</ol>
+<p>不过，由于垃圾回收和遍历F-Queue队列不是同一个线程，所以一旦重写了这个方法，就有可能导致对象被延迟回收，如果这个方法再被放入错误的代码，就极有可能导致该对象无法回收。所以一般不会重写finalize方法。</p>
+<h3 id="强弱软虚四种引用"><a href="#强弱软虚四种引用" class="headerlink" title="强弱软虚四种引用"></a>强弱软虚四种引用</h3><p>在Java对象里，有<strong>强弱软虚</strong>四种引用，它们都和垃圾回收流程密切相关，在项目里，我们可以通过合理地使用不同类型的引用来优化代码的内存使用性能。</p>
+<ul>
+<li>强引用：<br>指向通过new得到的内存空间的引用叫强引用。比如有String a = newString(“123”);，其中的a就是一个强引用，它指向了一块内容是123的堆空间。</li>
+<li>软引用（SoftReference）：<br>如果一个对象只具有软引用，而当前虚拟机堆内存空间足够，那么垃圾回收器就不会回收它，反之就会回收这些软引用指向的对象。</li>
+<li>弱引用（WeakReference）：<br>垃圾回收器一旦发现某块内存上<u>只有弱引用</u>（一定请注意只有弱引用，没强引用），不管当前内存空间是否足够，那么都会回收这块内存。</li>
+<li>虚引用</li>
+</ul>
+<h3 id="更高效地使用内存"><a href="#更高效地使用内存" class="headerlink" title="更高效地使用内存"></a>更高效地使用内存</h3><ol>
+<li>物理对象（比如Connection或IO等对象）在用好后应当立即释放。<br>一般我们会用try…catch…finally的样式来使用Connection或IO等对象，那么我们就可以在finally从句里关闭这些对象。</li>
+<li>当使用完某个对象时，应及时把它设置成null，比如obj = null;，这样就能撤销掉该引用对象上的强引用，从而能提升该对象的回收时间。</li>
+<li>不应当频繁地操作String对象。<br>String属于不可变类，频繁地操作String会产生大量的内存碎片，从而加重内存的负担，尤其地，不建议在循环里操作String对象。在for循环里，我们频繁地进行了字符串连接操作，所以会频繁地开辟新的内存空间存放新值，旧的空间随之会废弃，这样会造成大量的内存损耗。在其它可能频繁操作String对象的场合里，也会导致大量产生内存碎片，遇到这种情况，我们可以用StringBuilder替代String。</li>
+<li>集合对象在用好后，应当及时clear掉。</li>
+<li>我们知道，如果能合理地使用弱引用和软引用，能减少对象上的强引用个数，从而能让该对象被回收的时间提前。所以，可以在一切必要的场合尽可能多地使用弱引用和软引用</li>
+</ol>
 ]]></content>
       <categories>
         <category>笔记</category>
@@ -96,9 +176,10 @@
 </li>
 <li><p>在HashMap的“键”部分存放自定义对象的时候，一定要在这个对象里用自己的equals和hashCode方法来覆盖Object里的同名方法。</p>
 </li>
-<li><p>在Hash表里，存放在其中的数据和它的存储位置是用Hash函数关联的，<br><a href="https://s1.ax1x.com/2020/08/18/duj6ns.png">Hash表里存储数据的示意图</a><br>这样做的好处非常明显。比如我们要从中找6这个元素，我们可以先通过Hash函数计算6的索引位置，然后直接从1号索引里找到它了。</p>
+<li><p>在Hash表里，存放在其中的数据和它的存储位置是用Hash函数关联的</p>
+<p><img src="https://s1.ax1x.com/2020/08/18/duj6ns.png" alt="Hash表里存储数据的示意图" title="Hash表里存储数据的示意图"><br>这样做的好处非常明显。比如我们要从中找6这个元素，我们可以先通过Hash函数计算6的索引位置，然后直接从1号索引里找到它了。</p>
 </li>
-<li><p>假如经过Hash函数计算后，7和8有相同的Hash值，会遇到“Hash值冲突”这个问题，对此Java的HashMap对象采用的是“链地址法”的解决方案。<br><a href="https://s1.ax1x.com/2020/08/18/dujsXj.png">Hash表用链地址法解决冲突的示意图</a></p>
+<li><p>假如经过Hash函数计算后，7和8有相同的Hash值，会遇到“Hash值冲突”这个问题，对此Java的HashMap对象采用的是“链地址法”的解决方案。<br><img src="https://s1.ax1x.com/2020/08/18/dujsXj.png" alt="Hash表用链地址法解决冲突的示意图" title="Hash表用链地址法解决冲突的示意图"></p>
 </li>
 </ol>
 ]]></content>
